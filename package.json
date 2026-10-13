@@ -1,0 +1,9 @@
+{
+  "name": "local-library-extension",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": { "dev": "vite", "build": "tsc -b && vite build", "check": "tsc -b --pretty false", "test": "vitest run" },
+  "dependencies": { "@vitejs/plugin-react": "latest", "vite": "latest", "typescript": "latest", "react": "latest", "react-dom": "latest", "webextension-polyfill": "latest" },
+  "devDependencies": { "@types/react": "latest", "@types/react-dom": "latest", "fake-indexeddb": "latest", "vitest": "latest" }
+}

@@ -1,0 +1,2 @@
+export type ExtensionMessage = { type: 'OPEN_OPTIONS' } | { type: 'GET_HEALTH' } | { type: 'START_CAPTURE'; collectionId?: string; mode?: 'region' | 'visible' } | { type: 'REQUEST_VIEWPORT'; bounds?: { x: number; y: number; width: number; height: number }; collectionId?: string } | { type: 'SAVE_CAPTURE'; imageData: string; collectionId?: string; sourceUrl?: string; pageTitle?: string; domain?: string };
+export type ExtensionResponse = { ok: true } | { ok: false; error: string };

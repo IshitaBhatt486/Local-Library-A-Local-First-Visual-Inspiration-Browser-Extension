@@ -1,0 +1,1 @@
+import{a as e,o as t,s as n}from"./Primitives-Cim4bETd.js";import{l as r}from"./repositories-qgAl7Bme.js";import{t as i}from"./LibraryWorkspace-Bx5tfziv.js";var a=n(),o=t();(0,a.createRoot)(document.getElementById(`root`)).render((0,o.jsx)(e,{children:(0,o.jsx)(i,{})})),document.title=r.extensionName;

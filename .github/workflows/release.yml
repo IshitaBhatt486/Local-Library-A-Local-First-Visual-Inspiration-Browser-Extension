@@ -1,0 +1,27 @@
+name: Extension release
+on: { workflow_dispatch: {}, push: { tags: ['v*'] } }
+jobs:
+  package:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 24, cache: npm }
+      - run: npm.cmd ci
+      - run: npm.cmd test
+      - run: powershell -ExecutionPolicy Bypass -File scripts/package.ps1 -Channel chrome
+      - uses: actions/upload-artifact@v4
+        with: { name: chrome-unpacked-package, path: release/local-library-chrome.zip }
+  firefox-sign:
+    needs: package
+    if: ${{ secrets.FIREFOX_API_KEY != '' && secrets.FIREFOX_API_SECRET != '' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 24, cache: npm }
+      - run: npm ci
+      - run: npx web-ext sign --source-dir dist --api-key "$FIREFOX_API_KEY" --api-secret "$FIREFOX_API_SECRET" --channel listed
+        env: { FIREFOX_API_KEY: ${{ secrets.FIREFOX_API_KEY }}, FIREFOX_API_SECRET: ${{ secrets.FIREFOX_API_SECRET }} }
+      - uses: actions/upload-artifact@v4
+        with: { name: signed-firefox-xpi, path: web-ext-artifacts/*.xpi }

@@ -1,0 +1,12 @@
+import type { PropsWithChildren } from 'react';
+import './ui.css';
+export const Card = ({ children }: PropsWithChildren) => <section className="card">{children}</section>;
+export const Tag = ({ children }: PropsWithChildren) => <span className="tag">{children}</span>;
+export const Chip = ({ children }: PropsWithChildren) => <span className="chip">{children}</span>;
+export const EmptyState = ({ title, description }: { title: string; description: string }) => <div className="empty-state"><strong>{title}</strong><span>{description}</span></div>;
+export const LoadingState = () => <div className="loading-state" role="status" aria-label="Loading" />;
+export const Tooltip = ({ children }: PropsWithChildren) => <span className="tooltip">{children}</span>;
+export const Toast = ({ children }: PropsWithChildren) => <div className="toast" role="status">{children}</div>;
+export const Modal = ({ children }: PropsWithChildren) => <div className="modal-backdrop"><div className="modal">{children}</div></div>;
+export const Menu = ({ children }: PropsWithChildren) => <div className="menu" role="menu">{children}</div>;
+export const Dropdown = ({ children }: PropsWithChildren) => <div className="dropdown">{children}</div>;

@@ -1,0 +1,1 @@
+import{a as e,o as t,s as n}from"./Primitives-Cim4bETd.js";import{t as r}from"./LibraryWorkspace-Bx5tfziv.js";var i=n(),a=t(),o=new URLSearchParams(location.search).get(`collectionId`)??void 0;(0,i.createRoot)(document.getElementById(`root`)).render((0,a.jsx)(e,{children:(0,a.jsx)(r,{initialCollectionId:o})}));

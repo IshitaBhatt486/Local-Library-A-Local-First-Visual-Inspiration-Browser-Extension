@@ -1,0 +1,3 @@
+import { describe, expect, it } from 'vitest';
+import { validateCapturePayload } from './captureValidation';
+describe('capture payload validation',()=>{it('accepts bounded local screenshots',()=>expect(validateCapturePayload({imageData:'data:image/png;base64,AA==',sourceUrl:'https://example.com',bounds:{x:0,y:0,width:1,height:1}})?.sourceUrl).toBe('https://example.com'));it('rejects unsafe images and invalid bounds',()=>{expect(validateCapturePayload({imageData:'https://x'})).toBeUndefined();expect(validateCapturePayload({imageData:'data:image/png;base64,AA==',bounds:{width:0,height:1,x:0,y:0}})).toBeUndefined()})});

@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Local Library",
+  "version": "0.1.0",
+  "description": "A private, local-first collection workspace.",
+  "action": { "default_title": "Local Library", "default_popup": "src/entrypoints/popup/index.html" },
+  "options_ui": { "page": "src/entrypoints/options/index.html", "open_in_tab": true },
+  "background": {
+    "scripts": ["src/entrypoints/background/index.ts"],
+    "service_worker": "src/entrypoints/background/index.ts",
+    "type": "module"
+  },
+  "browser_specific_settings": { "gecko": { "id": "local-library@example.invalid" } },
+  "permissions": ["storage", "activeTab", "scripting", "contextMenus"],
+  "content_security_policy": { "extension_pages": "script-src 'self'; object-src 'self'; base-uri 'none'" },
+  "icons": { "16": "public/icons/icon-16.svg", "48": "public/icons/icon-48.svg", "128": "public/icons/icon-128.svg" }
+}

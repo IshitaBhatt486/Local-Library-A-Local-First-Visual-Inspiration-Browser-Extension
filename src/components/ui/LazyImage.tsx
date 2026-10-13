@@ -1,0 +1,2 @@
+import { memo, useEffect, useState } from 'react';
+export const LazyImage=memo(function LazyImage({thumbnail,full,alt}:{thumbnail?:string;full?:string;alt:string}){const[src,setSrc]=useState(thumbnail??full);useEffect(()=>{let active=true;if(full&&full!==thumbnail){const image=new Image();image.src=full;void image.decode?.().catch(()=>undefined).finally(()=>{if(active)setSrc(full)})}return()=>{active=false}},[thumbnail,full]);return <img loading="lazy" decoding="async" src={src} alt={alt}/>});
